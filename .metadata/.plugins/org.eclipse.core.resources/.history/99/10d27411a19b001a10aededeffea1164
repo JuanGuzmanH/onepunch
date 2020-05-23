@@ -1,0 +1,16 @@
+package progavanzada.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import progavanzada.model.Heroes;
+import progavanzada.model.Patrocinador;
+
+@Repository
+public interface HeroesRepository extends JpaRepository<Heroes, Integer> {
+	Patrocinador findById(int id);
+
+	List<Patrocinador> findByNombre(String nombre);
+}

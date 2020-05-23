@@ -1,0 +1,17 @@
+package progavanzada.service;
+
+import java.util.List;
+
+import progavanzada.model.Monstruos;
+
+public interface IResultadoService {
+	List<Resultado> listarpersonas();
+
+	Resultado encontrarporId(int id);
+
+	List<Resultado> listarporNombre(String nombre);
+
+	void guardar(Resultado resultado);
+
+	void eliminarporId(int id);
+}

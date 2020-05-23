@@ -1,0 +1,117 @@
+package progavanzada.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "heroes")
+public class Heroes implements Comparable<Heroes>{
+	@Id
+	private int id;
+	private String nombre;
+	private String rango;
+	private int habilidad;
+	private int derrotados;
+	private int fans;
+	private String residencia;
+	private int telefono;
+	private String agencia;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getRango() {
+		return rango;
+	}
+
+	public void setRango(String rango) {
+		this.rango = rango;
+	}
+
+	public int getHabilidad() {
+		return habilidad;
+	}
+
+	public void setHabilidad(int habilidad) {
+		this.habilidad = habilidad;
+	}
+
+	public int getDerrotados() {
+		return derrotados;
+	}
+
+	public void setDerrotados(int derrotados) {
+		this.derrotados = derrotados;
+	}
+
+	public int getFans() {
+		return fans;
+	}
+
+	public void setFans(int fans) {
+		this.fans = fans;
+	}
+
+	public String getResidencia() {
+		return residencia;
+	}
+
+	public void setResidencia(String residencia) {
+		this.residencia = residencia;
+	}
+
+	public int getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(int telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(String agencia) {
+		this.agencia = agencia;
+	}
+
+	public Heroes(int id, String nombre, String rango, int habilidad, int derrotados, int fans, String residencia,
+			int telefono, String agencia) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.rango = rango;
+		this.habilidad = habilidad;
+		this.derrotados = derrotados;
+		this.fans = fans;
+		this.residencia = residencia;
+		this.telefono = telefono;
+		this.agencia = agencia;
+	}
+
+	public Heroes() {
+		super();
+	}
+
+	@Override
+	public int compareTo(Heroes h) {
+		
+		return 0;
+	}
+
+}

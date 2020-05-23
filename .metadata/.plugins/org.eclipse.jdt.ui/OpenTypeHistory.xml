@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=progavanzada/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;progavanzada.service{IPersonaService.java[IPersonaService" modifiers="513" timestamp="1589835978845"/>
+<typeInfo handle="=progavanzada/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;progavanzada.service{IClasificacionService.java[IClasificacionService" modifiers="513" timestamp="1590021221847"/>
+<typeInfo handle="=progavanzada/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;progavanzada.service{IPatrocinadorService.java[IPatrocinadorService" modifiers="513" timestamp="1590090168686"/>
+<typeInfo handle="=progavanzada/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;progavanzada.service{IHeroesService.java[IHeroesService" modifiers="513" timestamp="1590093140697"/>
+<typeInfo handle="=progavanzada/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;progavanzada.service{IMonstruosService.java[IMonstruosService" modifiers="513" timestamp="1590166632864"/>
+<typeInfo handle="=progavanzada/C:\/Users\/Wener\/.m2\/repository\/org\/springframework\/data\/spring-data-jpa\/2.1.0.RELEASE\/spring-data-jpa-2.1.0.RELEASE.jar=/maven.pomderived=/true=/=/org.eclipse.jst.component.dependency=/\/WEB-INF\/lib=/=/maven.pomderived=/true=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-jpa=/=/maven.version=/2.1.0.RELEASE=/=/maven.scope=/compile=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1589751339186"/>
+<typeInfo handle="=progavanzada/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;progavanzada.service{IResultadoService.java[IResultadoService" modifiers="513" timestamp="1590187913328"/>
+</typeInfoHistroy>

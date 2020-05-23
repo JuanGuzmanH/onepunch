@@ -1,0 +1,92 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Heroes</title>
+<jsp:include page="plantillas/declarations.jsp"></jsp:include>
+<script>
+<!--Función para darle formato a la Tabla-->
+	$(document).ready(function() {
+		$('#myTable').DataTable();
+		responsive = True;
+	});
+</script>
+<style>
+.tabla {
+	padding-top: 30px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 50px;
+	text-align: center;
+	align: center;
+}
+
+.boton {
+	font: bold 150% arial;
+}
+
+.corto {
+	width: 60px;
+	position: center;
+	padding-left: 20px;
+}
+
+.corto1 {
+	width: 100px;
+	position: center;
+	padding-left: 20px;
+}
+
+.oculto {
+	position: absolute;
+	z-index: 1;
+	width: 0px;
+	height: 0px;
+}
+
+.imagenh {
+	position: center;
+	padding-left: 500px;
+}
+
+.imagenh2 {
+	position: center;
+	padding-left: 350px;
+}
+</style>
+</head>
+<body>
+	<jsp:include page="plantillas/menu.jsp"></jsp:include>
+	<div class="imagenh">
+		<img
+			src="data:image/png;base64,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">
+	</div>
+	<div class="tabla">
+		<form action="actualizarh" method="post" enctype="multipart/form-data">
+
+			<table border="1" id="myTable">
+				<thead>
+					<tr>
+
+						<th>Nombre</th>
+						<th>Habilidad</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<c:forEach items="${hero }" var="hero1"><td></td></c:forEach>
+					</tr>
+				</tbody>
+			</table>
+
+		</form>
+	</div>
+
+	<jsp:include page="plantillas/footer.jsp"></jsp:include>
+</body>
+</html>

@@ -1,0 +1,38 @@
+package progavanzada.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import progavanzada.model.Clasificacion;
+import progavanzada.repository.ClasificacionRepository;
+@Service
+public class ClasificacionService implements IClasificacionService {
+    @Autowired
+	ClasificacionRepository clasificacion;
+	@Override
+	public List<Clasificacion> listarpersonas() {
+		// TODO Auto-generated method stub
+		return clasificacion.findAll();
+	}
+
+	@Override
+	public Clasificacion encontrarporId(int id) {
+		// TODO Auto-generated method stub
+		return clasificacion.findById(id);
+	}
+
+	@Override
+	public List<Clasificacion> listarporNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return clasificacion.findByNombre(nombre);
+	}
+
+	@Override
+	public void guardar(Clasificacion clasificacion) {
+		// TODO Auto-generated method stub
+      
+	}
+
+}

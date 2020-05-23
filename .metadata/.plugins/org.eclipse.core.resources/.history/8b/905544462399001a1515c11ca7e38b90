@@ -1,0 +1,5 @@
+package progavanzada.service;
+
+public interface IPersonaService {
+List<Persona> listarTodas();
+}

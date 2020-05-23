@@ -1,0 +1,42 @@
+package progavanzada.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import progavanzada.model.Heroes;
+import progavanzada.repository.HeroesRepository;
+@Service
+public class HeroesService implements IHeroesService {
+    HeroesRepository hero;
+	@Override
+	public List<Heroes> listarpersonas() {
+		// TODO Auto-generated method stub
+		return hero.findAll();
+	}
+
+	@Override
+	public Heroes encontrarporId(int id) {
+		// TODO Auto-generated method stub
+		return hero.findById(id);
+	}
+
+	@Override
+	public List<Heroes> listarporNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return hero.findByNombre(nombre);
+	}
+
+	@Override
+	public void guardar(Heroes heroe) {
+		// TODO Auto-generated method stub
+        hero.save(heroe);
+	}
+
+	@Override
+	public void eliminarporId(int id) {
+		// TODO Auto-generated method stub
+       hero.deleteById(id);
+	}
+
+}

@@ -1,0 +1,44 @@
+package progavanzada.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import progavanzada.model.Resultado;
+import progavanzada.repository.ResultadoRepository;
+@Service
+public class ResultadoService implements IResultadoService {
+	@Autowired
+    ResultadoRepository result;
+	@Override
+	public List<Resultado> listarpersonas() {
+		// TODO Auto-generated method stub
+		return result.findAll();
+	}
+
+	@Override
+	public Resultado encontrarporId(int id) {
+		// TODO Auto-generated method stub
+		return result.findById(id);
+	}
+
+	@Override
+	public List<Resultado> listarporNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return result.findByNombre(nombre);
+	}
+
+	@Override
+	public void guardar(Resultado resultado) {
+		// TODO Auto-generated method stub
+     result.save(resultado);
+	}
+
+	@Override
+	public void eliminarporId(int id) {
+		// TODO Auto-generated method stub
+    result.deleteById(id);
+	}
+
+}

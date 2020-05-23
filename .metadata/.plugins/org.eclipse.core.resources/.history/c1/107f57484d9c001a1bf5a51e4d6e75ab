@@ -1,0 +1,5 @@
+package progavanzada.service;
+
+public interface IMonstruosService {
+
+}

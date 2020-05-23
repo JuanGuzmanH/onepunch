@@ -1,0 +1,40 @@
+package progavanzada.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import progavanzada.model.Patrocinador;
+import progavanzada.repository.PatrocinadorRepository;
+
+@Service
+public class PatrocinadorService implements IPatrocinadorService {
+	@Autowired
+	PatrocinadorRepository patro;
+
+	@Override
+	public List<Patrocinador> listarpersonas() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Patrocinador encontrarporId(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Patrocinador> listarporNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void guardar(Patrocinador clasificacion) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,12 @@
+package progavanzada.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="clasificacion")
+public class Clasificacion {
+private int id;
+private String nombre;
+private int puntos;
+}

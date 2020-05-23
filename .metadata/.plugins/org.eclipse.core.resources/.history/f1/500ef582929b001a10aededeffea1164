@@ -1,0 +1,10 @@
+package progavanzada.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import progavanzada.model.Patrocinador;
+@Repository
+public interface PatrocinadorRepository extends JpaRepository<Patrocinador, Integer> {
+
+}

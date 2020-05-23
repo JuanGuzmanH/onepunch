@@ -1,0 +1,8 @@
+package progavanzada.model;
+
+public class Persona {
+	private int id;
+	private String nombre;
+	private String apellido;
+	private String telefono;
+}

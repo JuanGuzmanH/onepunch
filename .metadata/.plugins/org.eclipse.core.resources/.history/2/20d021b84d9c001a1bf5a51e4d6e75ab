@@ -1,0 +1,46 @@
+package progavanzada.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import progavanzada.model.Monstruos;
+import progavanzada.repository.MonstruosRepository;
+
+@Service
+public class MonstruosService implements IMonstruosService {
+	@Autowired
+	MonstruosRepository monst;
+
+	@Override
+	public List<Monstruos> listarpersonas() {
+		// TODO Auto-generated method stub
+		return monst.findAll();
+	}
+
+	@Override
+	public Monstruos encontrarporId(int id) {
+		// TODO Auto-generated method stub
+		return monst.findById(id);
+	}
+
+	@Override
+	public List<Monstruos> listarporNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return monst.findByNombre(nombre);
+	}
+
+	@Override
+	public void guardar(Monstruos monstruo) {
+		// TODO Auto-generated method stub
+    monst.save(monstruo);
+	}
+
+	@Override
+	public void eliminarporId(int id) {
+		// TODO Auto-generated method stub
+    monst.deleteById(id);
+	}
+
+}

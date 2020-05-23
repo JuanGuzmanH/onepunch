@@ -1,0 +1,47 @@
+package progavanzada.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="monstruos")
+public class Monstruos {
+	@Id
+	private int id;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getAtacado() {
+		return atacado;
+	}
+	public void setAtacado(String atacado) {
+		this.atacado = atacado;
+	}
+	public int getLuchas() {
+		return luchas;
+	}
+	public void setLuchas(int luchas) {
+		this.luchas = luchas;
+	}
+	public int getAmenaza() {
+		return amenaza;
+	}
+	public void setAmenaza(int amenaza) {
+		this.amenaza = amenaza;
+	}
+	private String nombre;
+	private String atacado;
+	private int luchas;
+	private int amenaza;
+
+}

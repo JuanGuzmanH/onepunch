@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>ejemplo</title>
+<jsp:include page="plantillas/declarations.jsp"></jsp:include>
+<script>
+<!--Función para darle formato a la Tabla-->
+	$(document).ready(function() {
+		$('#myTable').DataTable();
+		responsive = True;
+	});
+</script>
+</head>
+<body>
+<jsp:include page="plantillas/menu.jsp"></jsp:include>
+	<table border="1" id="myTable">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Telefono</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+		</tbody>
+	</table>
+	<c:forEach items="${estudiantes }" var="estudiante">
+				${estudiante.id }
+			</c:forEach>
+<jsp:include page="plantillas/footer.jsp"></jsp:include>
+</body>
+</html>

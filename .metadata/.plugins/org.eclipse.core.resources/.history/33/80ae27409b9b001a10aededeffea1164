@@ -1,0 +1,17 @@
+package progavanzada.service;
+
+import java.util.List;
+
+import progavanzada.model.Patrocinador;
+
+public interface IPatrocinadorService {
+	List<Patrocinador> listarpersonas();
+
+	Patrocinador encontrarporId(int id);
+
+	List<Patrocinador> listarporNombre(String nombre);
+
+	void guardar(Patrocinador patrocinador);
+
+	void eliminar(Patrocinador patrocinador);
+}

@@ -1,0 +1,259 @@
+package progavanzada.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import progavanzada.model.Clasificacion;
+import progavanzada.model.Estudiante;
+import progavanzada.model.Patrocinador;
+import progavanzada.model.Persona;
+import progavanzada.model.Resultado;
+import progavanzada.service.IClasificacionService;
+import progavanzada.service.IHeroesService;
+import progavanzada.service.IMonstruosService;
+import progavanzada.service.IPatrocinadorService;
+import progavanzada.service.IPersonaService;
+import progavanzada.service.IResultadoService;
+import progavanzada.model.Heroes;
+import progavanzada.model.Monstruos;
+
+@Controller
+public class HomeController {
+	@Autowired
+	private IResultadoService resultado;
+	@Autowired
+	private IHeroesService heroes;
+	@Autowired
+	private IPatrocinadorService patrocinador;
+	@Autowired
+	private IPersonaService personas;
+	@Autowired
+	private IClasificacionService clasificacion;
+	@Autowired
+	private IMonstruosService monstruos;
+	private Model mod;
+
+	@RequestMapping(value = "/home1", method = RequestMethod.GET)
+	public String HomePage() {
+		return "home";
+	}
+	
+
+	@RequestMapping(value = "/insertarpersona")
+	public String insertar() {
+		return "insertarpersona";
+	}
+
+	@RequestMapping(value = "/jajaxd", method = RequestMethod.GET)
+	public String Datos(Model model) {
+		List<Persona> estudiantes = personas.listarpersonas();
+		model.addAttribute("estudiantes", estudiantes);
+		return "detalle";
+	}
+
+	@RequestMapping(value = "/asd", method = RequestMethod.GET)
+	public String Principal(Model model) {
+		List<Estudiante> estudiantes = listaEstudiantes();
+		model.addAttribute("estudiantes", estudiantes);
+		return "home";
+	}
+
+	public List<Estudiante> listaEstudiantes() {
+		List<Estudiante> estudiantes = new ArrayList<Estudiante>();
+		Estudiante e1 = new Estudiante("Juan", "Guzman", "Bogota", 1);
+		Estudiante e2 = new Estudiante("Camila", "Wynnie", "Debajo de un puente", 2);
+		estudiantes.add(e1);
+		estudiantes.add(e2);
+		return estudiantes;
+	}
+
+	@PostMapping(value = "/guardar")
+	public String Guardar(@ModelAttribute Persona persona, BindingResult result, Model model) {
+		personas.guardar(persona);
+		List<Persona> estudiantes = personas.listarpersonas();
+		model.addAttribute("estudiantes", estudiantes);
+		return "detalle";
+	}
+
+	@RequestMapping(value = "/vj")
+	public String VideoJuegos(Model model) {
+		List<Clasificacion> clas = clasificacion.listarpersonas();
+		model.addAttribute("clas", clas);
+		return "videojuegos";
+	}
+
+	@RequestMapping(value = "/juego1")
+	public String Juego1() {
+		return "juego1";
+	}
+
+	@RequestMapping(value = "/juego2")
+	public String Juego2() {
+		return "juego2";
+	}
+
+	@RequestMapping(value = "/juego3")
+	public String Juego3() {
+		return "juego3";
+	}
+
+	@RequestMapping(value = "/subir/{id}")
+	public String Subir(@PathVariable("id") int id, Model model) {
+
+		Clasificacion clasif = clasificacion.encontrarporId(id);
+		clasif.setPuntos(clasif.getPuntos() + 1);
+		clasificacion.guardar(clasif);
+		if (id > 1) {
+			Clasificacion c1 = clasificacion.encontrarporId(id - 1);
+			Clasificacion c2 = clasificacion.encontrarporId(id);
+			if (c1.getPuntos() < c2.getPuntos()) {
+				int a = c1.getId();
+				int b = c2.getId();
+				c1.setId(b);
+				c2.setId(a);
+				clasificacion.guardar(c1);
+				clasificacion.guardar(c2);
+			}
+		}
+
+		List<Clasificacion> clas = clasificacion.listarpersonas();
+
+		model.addAttribute("clas", clas);
+		return "redirect:/vj";
+	}
+
+	@RequestMapping(value = "/reiniciarclasificacion")
+	public String Reiniciar(Model model) {
+
+		List<Clasificacion> clas = clasificacion.listarpersonas();
+		for (int i = 1; i <= clas.size(); i++) {
+			Clasificacion c1 = clasificacion.encontrarporId(i);
+			c1.setPuntos(0);
+			clasificacion.guardar(c1);
+		}
+
+		model.addAttribute("clas", clas);
+		return "redirect:/vj";
+	}
+
+	@RequestMapping(value = "/patrocinadores")
+	public String Patrocinadores(Model model) {
+		List<Patrocinador> patro = patrocinador.listarpersonas();
+		model.addAttribute("patro", patro);
+		return "patrocinadores";
+	}
+
+	@PostMapping(value = "/guardarp")
+	public String GuardarP(@ModelAttribute Patrocinador patroc, BindingResult result, Model model) {
+		patrocinador.guardar(patroc);
+		List<Patrocinador> patro = patrocinador.listarpersonas();
+		model.addAttribute("patro", patro);
+		return "redirect:/patrocinadores";
+
+	}
+
+	@RequestMapping(value = "/eliminarp/{id}")
+	public String EliminarP(@PathVariable("id") int id, Model model) {
+		patrocinador.eliminarporId(id);
+		List<Patrocinador> patro = patrocinador.listarpersonas();
+
+		model.addAttribute("patro", patro);
+		return "redirect:/patrocinadores";
+	}
+
+	@RequestMapping(value = "/heroes")
+	public String Heroes(Model model) {
+		List<Heroes> hero = heroes.listarpersonas();
+		model.addAttribute("hero", hero);
+		List<Patrocinador> patro = patrocinador.listarpersonas();
+		model.addAttribute("patro", patro);
+		return "heroes";
+	}
+
+	@PostMapping(value = "/guardarh")
+	public String GuardarH(@ModelAttribute Heroes heroe, BindingResult result, Model model) {
+		heroes.guardar(heroe);
+		List<Heroes> hero = heroes.listarpersonas();
+		model.addAttribute("hero", hero);
+		return "redirect:/heroes";
+
+	}
+
+	@RequestMapping(value = "/eliminarh/{id}")
+	public String EliminarH(@PathVariable("id") int id, Model model) {
+		heroes.eliminarporId(id);
+		List<Heroes> hero = heroes.listarpersonas();
+		model.addAttribute("hero", hero);
+		return "redirect:/heroes";
+	}
+
+	@PostMapping(value = "/actualizarh")
+	public String ActualizarH(@RequestParam("id") int id, @RequestParam("rango") String rango,
+			@RequestParam("habilidad") int habilidad, @RequestParam("derrotados") int derrotados,
+			@RequestParam("fans") int fans, @RequestParam("agencia") String agencia, Model model) {
+		Heroes h = heroes.encontrarporId(id);
+		h.setRango(rango.substring(0, 1));
+		h.setHabilidad(habilidad);
+		h.setDerrotados(derrotados);
+		h.setFans(fans);
+		if (agencia.contains(",")) {
+			String[] split = agencia.split(",");
+			h.setAgencia(split[0]);
+		} else {
+			h.setAgencia(agencia);
+		}
+		heroes.guardar(h);
+		List<Heroes> hero = heroes.listarpersonas();
+		model.addAttribute("hero", hero);
+
+		return "redirect:/heroes";
+	}
+
+	@RequestMapping(value = "/versus")
+	public String Versus(Model model) {
+		List<Monstruos> mon = monstruos.listarpersonas();
+		model.addAttribute("mon", mon);
+		List<Heroes> hero = heroes.listarpersonas();
+		model.addAttribute("hero", hero);
+		return "versus";
+	}
+
+	@PostMapping(value = "/pelea")
+	public String Pelea(@RequestParam("id1") String id1, @RequestParam("id2") String id2, Model model) {
+		Heroes h = heroes.encontrarporNombre(id1);
+		Monstruos m = monstruos.encontrarporNombre(id2);
+		List<Heroes> he= new ArrayList<Heroes>();
+		List<Monstruos> he= new ArrayList<Monstruos>();
+		if (h.getHabilidad() > m.getAmenaza()) {
+			// List<Heroes> he = new ArrayList<Heroes>();
+			// he.add(h);
+			model.addAttribute("h", h);
+			model.addAttribute("re", resultado.encontrarporId(1));
+			return "resultados";
+		} else if (h.getHabilidad() < m.getAmenaza()) {
+			// List<Monstruos> he = new ArrayList<Monstruos>();
+			// he.add(m);
+			model.addAttribute("h", m);
+			model.addAttribute("re", resultado.encontrarporId(1));
+			return "resultados";
+		} else {
+			Heroes he = new Heroes();
+			model.addAttribute("h", he);
+			model.addAttribute("re", resultado.encontrarporId(2));
+			return "resultados";
+		}
+
+	}
+	
+}

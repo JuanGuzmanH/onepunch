@@ -1,0 +1,15 @@
+package progavanzada.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import progavanzada.model.Monstruos;
+
+@Repository
+public interface MonstruosRepository extends JpaRepository<Monstruos, Integer> {
+	Monstruos findById(int id);
+
+	Monstruos findByNombre(String nombre);
+}

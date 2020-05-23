@@ -1,0 +1,15 @@
+package progavanzada.service;
+
+import java.util.List;
+
+import progavanzada.model.Clasificacion;
+
+public interface IClasificacionService {
+	List<Clasificacion> listarpersonas();
+
+	Clasificacion encontrarporId(int id);
+
+	List<Clasificacion> listarporNombre(String nombre);
+
+	void guardar(Clasificacion persona);
+}

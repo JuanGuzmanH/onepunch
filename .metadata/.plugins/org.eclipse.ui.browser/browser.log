@@ -1,0 +1,5 @@
+
+may. 18, 2020 12:01:09.75 NEW SESSION
+may. 18, 2020 12:01:09.75 [21108:223880:0518/120109.751:ERROR:browser_switcher_service.cc(238)] XXX Init()
+may. 18, 2020 19:00:12.47 [21108:222944:0518/190012.475:ERROR:socket_stream.cc(218)] Closing stream with result -2
+may. 18, 2020 21:01:58.79 [21108:222944:0518/210158.791:ERROR:socket_stream.cc(218)] Closing stream with result -2

@@ -1,0 +1,18 @@
+package progavanzada.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="heroes")
+public class Heroes {
+int id;
+String nombre;
+String rango;
+int habilidad;
+int derrotados;
+int fans;
+int residencia;
+int telefono;
+String agencia;
+}

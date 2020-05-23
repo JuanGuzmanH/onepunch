@@ -1,0 +1,11 @@
+package progavanzada.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="monstruos")
+public class Monstruos {
+	private int id;
+
+}

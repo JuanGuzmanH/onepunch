@@ -1,0 +1,15 @@
+package progavanzada.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import progavanzada.model.Clasificacion;
+import progavanzada.model.Patrocinador;
+
+@Repository
+public interface PatrocinadorRepository extends JpaRepository<Patrocinador, Integer> {
+	Patrocinador findById(int id);
+	Patrocinador findByNombre(String nombre);
+}

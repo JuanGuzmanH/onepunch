@@ -1,0 +1,196 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Heroes</title>
+<jsp:include page="plantillas/declarations.jsp"></jsp:include>
+<script>
+<!--Función para darle formato a la Tabla-->
+	$(document).ready(function() {
+		$('#myTable').DataTable();
+		responsive = True;
+	});
+</script>
+<style>
+.tabla {
+	padding-top: 30px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 50px;
+	text-align: center;
+	align: center;
+}
+
+.boton {
+	font: bold 150% arial;
+}
+.corto{
+width: 60px;
+position: center;
+padding-left: 20px;
+}
+.corto1{
+width: 100px;
+position: center;
+padding-left: 20px;
+}
+
+</style>
+</head>
+<body>
+	<jsp:include page="plantillas/menu.jsp"></jsp:include>
+	<div class="tabla">
+		<form action="actualizarh" method="post" enctype="multipart/form-data">
+
+			<table border="1" id="myTable">
+				<thead>
+					<tr>
+
+						<th>Nombre</th>
+						<th>Rango</th>
+						<th>Habilidad</th>
+						<th>Derrotados</th>
+						<th>Fans</th>
+						<th>Residencia</th>
+						<th>Telefono</th>
+						<th>Agencia</th>
+						<th>Actualizar</th>
+						<th>Eliminar</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<c:forEach items="${hero }" var="hero1">
+						<tr>
+
+							<td>${hero1.nombre }</td>
+							<td>
+							<div class="corto">
+								<div class="form-group">
+									<input type="text"
+										class="form-control" width="10px" id="rango" name="rango" placeholder="${hero1.rango }"
+										value="${hero1.rango }" required></input>
+								</div></div>
+							</td>
+							<td><div class="corto1">
+								<div class="form-group">
+									<input type="text"
+										class="form-control" width="10px" id="habilidad" name="habilidad" placeholder="${hero1.habilidad }"
+										value="${hero1.habilidad }" required></input>
+								</div></div></td>
+							<td><div class="corto1">
+								<div class="form-group">
+									<input type="text"
+										class="form-control" width="10px" id="derrotados" name="derrotados" placeholder="${hero1.derrotados }"
+										value="${hero1.derrotados }" required></input>
+								</div></div></td>
+							<td><div class="corto1">
+								<div class="form-group">
+									<input type="text"
+										class="form-control" width="10px" id="fans" name="fans" placeholder="${hero1.fans }"
+										value="${hero1.fans }" required></input>
+								</div></div></td>
+							<td>${hero1.residencia }</td>
+							<td>${hero1.telefono }</td>
+							<td>${hero1.agencia }</td>
+							<td><div class="boton">
+									<a href="actualizarh/${hero1.id }-${hero1.rango}"><button type="submit"
+											class="btn btn-info">+</button></a>
+								</div></td>
+							<td><div class="boton">
+									<a href="eliminarh/${hero1.id }"><button type="button"
+											class="btn btn-danger">x</button></a>
+								</div></td>
+						</tr>
+					</c:forEach>
+
+				</tbody>
+			</table>
+
+		</form>
+	</div>
+	<div class="tabla">
+		<form action="guardarh" method="post" enctype="multipart/form-data">
+
+			<table border="1" id="myTable">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Nombre</th>
+						<th>Rango</th>
+						<th>Habilidad</th>
+						<th>Derrotados</th>
+						<th>Fans</th>
+						<th>Residencia</th>
+						<th>Telefono</th>
+						<th>Agencia</th>
+						<th>A&ntilde;adir</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><div class="form-group">
+								<label for="exampleInputText1">Id</label> <input type="number"
+									class="form-control" id="id" name="id" placeholder="id"
+									required>
+							</div></td>
+						<td><div class="form-group">
+								<label for="exampleInputText1">Nombre</label> <input type="text"
+									class="form-control" id="nombre" name="nombre"
+									placeholder="Nombre" required>
+							</div></td>
+						<td><div class="form-group">
+								<label for="exampleInputText1">Rango</label> <input type="text"
+									class="form-control" id="rango" name="Rango"
+									placeholder="Rango" required>
+							</div></td>
+						<td><div class="form-group">
+								<label for="exampleInputText1">Habilidad</label> <input
+									type="number" class="form-control" id="habilidad"
+									name="habilidad" placeholder="Habilidad" required>
+							</div></td>
+						<td><div class="form-group">
+								<label for="exampleInputText1">Derrotados</label> <input
+									type="number" class="form-control" id="derrotados" name="derrotados"
+									placeholder="Derrotados" required>
+							</div></td>
+						<td><div class="form-group">
+								<label for="exampleInputText1">Fans</label> <input type="number"
+									class="form-control" id="fans" name="fans"
+									placeholder="Fans" required>
+							</div></td>
+						<td><div class="form-group">
+								<label for="exampleInputText1">Residencia</label> <input
+									type="text" class="form-control" id="residencia" name="residencia"
+									placeholder="Residencia" required>
+							</div></td>
+						<td><div class="form-group">
+								<label for="exampleInputText1">Telefono</label> <input
+									type="number" class="form-control" id="telefono"
+									name="telefono" placeholder="Telefono" required>
+							</div></td>
+						<td><div class="form-group">
+								<label for="exampleInputText1">Agencia</label> <input
+									type="text" class="form-control" id="agencia" name="agencia"
+									placeholder="Agencia" required>
+							</div></td>
+						<td><div class="boton">
+								<button type="submit" class="btn btn-primary">+</button>
+							</div></td>
+
+					</tr>
+
+				</tbody>
+			</table>
+		</form>
+	</div>
+
+	<jsp:include page="plantillas/footer.jsp"></jsp:include>
+</body>
+</html>

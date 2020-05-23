@@ -1,0 +1,13 @@
+package progavanzada.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import progavanzada.model.Resultado;
+
+public interface ResultadoRepository extends JpaRepository<Resultado, Integer> {
+	Resultado findById(int id);
+
+	List<Resultado> findByNombre(String nombre);
+}

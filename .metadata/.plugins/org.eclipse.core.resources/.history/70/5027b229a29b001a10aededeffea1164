@@ -1,0 +1,20 @@
+package progavanzada.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import progavanzada.model.Heroes;
+
+@Service
+public interface IHeroesService {
+	List<Heroes> listarpersonas();
+
+	Heroes encontrarporId(int id);
+
+	List<Heroes> listarporNombre(String nombre);
+
+	void guardar(Heroes heroe);
+
+	void eliminarporId(int id);
+}
